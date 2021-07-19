@@ -11,7 +11,7 @@
 
 // twoSum([1, 5, 9], 10);
 
-//Hashmap
+////////////////////////Hashmap
 /*
 nums = [1,5,9]
 target = 10
@@ -23,17 +23,26 @@ complement_pair = 10-9 = 1
 
 */
 
-const twoSum = function (nums, target) {
-  let map = {};
-  for (let i = 0; i < nums.length; i++) {
-    const value = nums[i];
-    const complementPair = target - value;
-    if (map[complementPair] !== undefined) {
-      console.log([map[complementPair], i]);
-      return [map[complementPair], i];
-    } else {
-      map[value] = i;
-    }
+// const twoSum = function (nums, target) {
+//   let map = {};
+//   for (let i = 0; i < nums.length; i++) {
+//     const value = nums[i];
+//     const complementPair = target - value;
+//     if (map[complementPair] !== undefined) {
+//       console.log([map[complementPair], i]);
+//       return [map[complementPair], i];
+//     } else {
+//       map[value] = i;
+//     }
+//   }
+// };
+// twoSum([1, 5, 9], 10);
+
+///////////new solution
+const twoSum = (nums, target) => {
+  let storage = {};
+  for (let [index, num] of nums.entries()) {
+    if (storage[num] !== undefined) return [storage[num], index];
+    storage[target - num] = index;
   }
 };
-twoSum([1, 5, 9], 10);
